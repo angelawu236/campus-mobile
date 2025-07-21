@@ -23,7 +23,6 @@ class EventsService {
     try {
       /// fetch data
       String _response = await NetworkHelper.fetchData(dotenv.get('EVENTS_ENDPOINT'));
-
       /// parse data
       final data = eventModelFromJson(_response);
       _data = data;

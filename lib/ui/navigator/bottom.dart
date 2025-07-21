@@ -50,7 +50,8 @@ class _BottomTabBarState extends State<BottomTabBar> {
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(42),
           child: Provider.of<CustomAppBar>(context).appBar),
-      body: PushNotificationWrapper(child: currentTab[provider.currentIndex]),
+      body: PushNotificationWrapper(child: currentTab[provider.currentIndex]), //this handles what users sees on screen.
+      //below handles the icon bar at the bottom
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           color: theme.bottomNavigationBarTheme.backgroundColor,
@@ -70,11 +71,11 @@ class _BottomTabBarState extends State<BottomTabBar> {
           onTap: (index) {
             provider.currentIndex = index;
             switch (index) {
-              case NavigatorConstants.HomeTab:
+              case NavigatorConstants.HomeTab: //checking if index == 0
                 Provider.of<CustomAppBar>(context, listen: false)
                     .changeTitle(null);
                 break;
-              case NavigatorConstants.MapTab:
+              case NavigatorConstants.MapTab: //checking if index == 1
                 resetAllCardLoadedStates();
                 Provider.of<CustomAppBar>(context, listen: false)
                     .changeTitle("Maps");

@@ -31,6 +31,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uni_links2/uni_links.dart';
 import 'package:flutter/rendering.dart';
+import 'package:campus_mobile_experimental/ui/hello_world_card/hello_world_card.dart';
+
 
 //--- code to track size changes of dynamic web card widget content ---
 typedef void OnWidgetSizeChange(Size size);
@@ -177,9 +179,11 @@ class _HomeState extends State<Home> {
   }
 
   List<Widget> createList() {
-    final orderedCards = getOrderedCardsList(context.watch<CardsDataProvider>().cardOrder);
+    final orderedCards = getOrderedCardsList([
+        ...context.watch<CardsDataProvider>().cardOrder, 'hello_world']
+    );
     final noticesCards = getNoticesCardsList(context.watch<NoticesDataProvider>().noticesModel);
-    return [...noticesCards, ...orderedCards];
+    return [...noticesCards, ...orderedCards,];
   }
 
   List<Widget> getNoticesCardsList(List<NoticesModel> notices) =>
@@ -199,7 +203,9 @@ class _HomeState extends State<Home> {
     'employee_id': EmployeeIdCard.new,
     'parking': ParkingCard.new,
     'speed_test': WiFiCard.new,
-    'shuttle': ShuttleCard.new
+    'shuttle': ShuttleCard.new,
+    'hello_world': HelloWorldCard.new,
+
   };
 
   List<Widget> getOrderedCardsList(List<String> order)

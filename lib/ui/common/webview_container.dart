@@ -89,9 +89,10 @@ class _WebViewContainerState extends State<WebViewContainer>
             width: 0.5,
           ),
         ),
-        color: Theme.of(context).brightness == Brightness.dark
-            ? darkPrimaryBgColor
-            : lightAccentColor,
+        color: Colors.green,
+        // color: Theme.of(context).brightness == Brightness.dark
+        //     ? darkPrimaryBgColor
+        //     : lightAccentColor,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[

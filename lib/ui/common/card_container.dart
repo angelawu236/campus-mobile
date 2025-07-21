@@ -85,7 +85,7 @@ class CardContainer extends StatelessWidget {
     if (errorText != null) {
       print(errorText);
       if (titleText == 'NEWS') {
-        return Text('No articles found.');
+        return Text('No articles found. :( what is wrong..');
       } else if (titleText == 'EVENTS') {
         return Text('No events found.');
       } else if (titleText == 'STUDENT ID') {
@@ -117,7 +117,7 @@ class CardContainer extends StatelessWidget {
       } else {
         return Text('An error occurred, please try again.');
       }
-    } else if (isLoading) {
+    } else if (isLoading) { //if successfully loads
       return Container(
         width: double.infinity,
         constraints: BoxConstraints(minHeight: cardContentMinHeight),
