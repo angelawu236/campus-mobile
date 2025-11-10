@@ -1,0 +1,36 @@
+repos:
+  - repo: local
+    hooks:
+      - id: run-all-lint-scripts
+        name: Run all lint scripts
+        language: system
+        pass_filenames: false
+        entry: |
+          bash -c '
+            echo "Running all lint scripts..."
+            echo "----------------------------------------"
+
+            scripts=(
+            )
+
+            all_passed=true
+
+            for s in "${scripts[@]}"; do
+              echo ""
+              echo "Running $s..."
+              if "$s" check; then
+                echo "$s: PASSED"
+              else
+                echo "$s: FAILED"
+                all_passed=false
+              fi
+            done
+
+            echo "----------------------------------------"
+            if [ "$all_passed" = true ]; then
+              echo "All lint scripts passed."
+            else
+              echo "Github will auto-commit to fix your lint issues. Make sure to git pull before further editing."
+              exit 1
+            fi
+          '
