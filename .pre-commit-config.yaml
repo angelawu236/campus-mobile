@@ -5,6 +5,8 @@ repos:
         name: Run all lint scripts
         language: system
         pass_filenames: false
+        always_run: true
+        verbose: true
         entry: |
           bash -c '
             echo "Running all lint scripts..."
